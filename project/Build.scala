@@ -65,7 +65,10 @@ object ObjectAlgebrasBuild extends Build {
     settings (Settings.common: _*)
     settings (
       moduleName := "objectalgebras-examples",
-      libraryDependencies += "org.scalatest" %% "scalatest" % "2.2.0" % "test",
+      libraryDependencies ++= Seq(
+        "org.scalatest" %% "scalatest" % "2.2.4" % "test",
+        "com.chuusai" %% "shapeless" % "2.2.0-RC6"
+      ),
       publish := (),
       publishLocal := ()
     )
