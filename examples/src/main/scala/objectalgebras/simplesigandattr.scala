@@ -20,4 +20,12 @@ object signaturesAndAttributes {
 
   val foldable: Expr.Complete[Eval] = evalAlg
 
+
+  // nested occurrences
+  @sig trait Nested {
+    def List: List[Nested]
+    def Option: Option[Nested]
+  }
+
+
 }
