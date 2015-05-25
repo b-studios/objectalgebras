@@ -5,7 +5,6 @@ package test
 // some signatures defined in example project
 import signatures._
 import syntax.attribute._
-import syntax.algebra._
 
 import org.scalatest._
 
