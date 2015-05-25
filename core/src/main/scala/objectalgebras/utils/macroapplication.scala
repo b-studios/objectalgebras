@@ -1,8 +1,7 @@
 package objectalgebras
 package utils
 
-import scala.language.experimental.macros
-import scala.reflect.macros.whitebox.Context
+import scala.reflect.macros.blackbox.Context
 
 trait MacroApplication { self: Errors =>
 

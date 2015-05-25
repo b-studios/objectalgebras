@@ -3,11 +3,11 @@ package syntax
 
 import scala.annotation.implicitNotFound
 import scala.language.experimental.macros
-import scala.language.reflectiveCalls
 import scala.annotation.StaticAnnotation
-import scala.reflect.macros.whitebox.Context
+import scala.reflect.macros.blackbox.Context
+import scala.collection.mutable
 
-import utils._
+import utils.Utils
 
 package object signature {
 
