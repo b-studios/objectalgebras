@@ -15,7 +15,7 @@ trait MacroApplication { self: Errors =>
    * Supports multiple value as well as typearguments
    */
   case class MacroApp (
-    name: TypeName,
+    name: String,
     typeArgs: List[List[Tree]],
     termArgs: List[List[Tree]],
     body: Tree
@@ -31,7 +31,7 @@ trait MacroApplication { self: Errors =>
       case _ => None
     }
     object ValueArgs {
-      def unapply(t: Tree): Option[(TypeName, List[List[Tree]], List[List[Tree]])] = t match {
+      def unapply(t: Tree): Option[(String, List[List[Tree]], List[List[Tree]])] = t match {
         case Select(New(TypeArgs(name, typeArgs)), termNames.CONSTRUCTOR) =>
           Some((name, Nil, typeArgs))
         case Apply(ValueArgs(name, valueArgs, typeArgs), args) =>
@@ -40,11 +40,10 @@ trait MacroApplication { self: Errors =>
       }
     }
     object TypeArgs {
-      def unapply(t: Tree): Option[(TypeName, List[List[Tree]])] = t match {
-        case Ident(name: TypeName) => Some((name, Nil))
+      def unapply(t: Tree): Option[(String, List[List[Tree]])] = t match {
         case AppliedTypeTree(TypeArgs(name, typeArgs), args) =>
           Some((name, typeArgs :+ args))
-        case _ => None
+        case name => Some((name.toString, Nil))
       }
     }
   }

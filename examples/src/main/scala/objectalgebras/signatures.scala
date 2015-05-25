@@ -20,6 +20,9 @@ object signatures {
     def Option: Option[Nested]
   }
 
+  @sig [Expr] trait Stmt {
+    def If: (Expr, Stmt, Stmt)
+  }
 
   val foldable: Expr.Complete[Int] = eval
 
