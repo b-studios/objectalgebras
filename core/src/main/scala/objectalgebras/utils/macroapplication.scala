@@ -22,6 +22,8 @@ trait MacroApplication { self: Errors =>
     body: Tree
   )
   object MacroApp {
+    def apply: Tree => MacroApp = t => unapply(t) getOrElse
+      error(s"Parse Error\n  Cannot parse macro application: ${show(t)}")
 
     def unapply(t: Tree): Option[MacroApp] = t match {
       case Apply(Select(
@@ -46,8 +48,5 @@ trait MacroApplication { self: Errors =>
         case _ => None
       }
     }
-
-    def apply: Tree => MacroApp = t => unapply(t) getOrElse
-      error(s"Parse Error\n  Cannot parse macro application: ${show(t)}")
   }
 }
