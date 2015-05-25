@@ -1,4 +1,4 @@
 # Object Algebras
 Syntactic sugar for object algebras, implemented using macros.
 
-![Build Status](https://kamino.informatik.uni-tuebingen.de:8080/buildStatus/icon?job=ObjectAlgebras)
+Be warned: This library is very pre-alpha, uses experimental Scala features and some type level hackery. So only use on your own risk.
