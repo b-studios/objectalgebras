@@ -1,31 +1,26 @@
 package objectalgebras
 package tests
 
-import syntax.attribute._
 import syntax.signature._
 
-object signaturesAndAttributes {
-
-  @attr def eval: Int
+object signatures {
 
   @sig trait Expr {
     def Lit: Int
     def Add: (Expr, Expr)
   }
 
-  object evalAlg extends Expr[Eval, Eval] {
+  object eval extends Expr[Int, Int] {
     def Lit = identity
-    def Add = (l, r) => l.eval + r.eval
+    def Add = _ + _
   }
 
-  val foldable: Expr.Complete[Eval] = evalAlg
-
-
-  // nested occurrences
   @sig trait Nested {
     def List: List[Nested]
     def Option: Option[Nested]
   }
 
+
+  val foldable: Expr.Complete[Int] = eval
 
 }
