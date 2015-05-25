@@ -1,5 +1,5 @@
 package objectalgebras
-package tests
+package examples
 
 import syntax.signature._
 

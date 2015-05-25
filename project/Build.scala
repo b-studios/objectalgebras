@@ -67,7 +67,10 @@ object ObjectAlgebrasBuild extends Build {
       moduleName := "objectalgebras-examples",
       libraryDependencies ++= Seq(
         "org.scalatest" %% "scalatest" % "2.2.4" % "test",
-        "com.chuusai" %% "shapeless" % "2.2.0-RC6"
+        "com.chuusai" %% "shapeless" % "2.2.0-RC6",
+
+        "org.scala-lang" % "scala-compiler" % scalaVersion.value % "provided",
+        "org.scala-lang" % "scala-reflect" % scalaVersion.value % "provided"
       ),
       publish := (),
       publishLocal := ()
