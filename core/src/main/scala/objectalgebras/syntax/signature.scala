@@ -7,8 +7,9 @@ import scala.language.reflectiveCalls
 import scala.annotation.StaticAnnotation
 import scala.reflect.macros.whitebox.Context
 
-package object signature {
+import utils._
 
+package object signature {
 
   /**
    * Not yet supported:
@@ -20,13 +21,14 @@ package object signature {
     def macroTransform(annottees: Any*): Any = macro SigAnnotationMacro.apply
   }
 
-  class SigAnnotationMacro(val c: Context) {
+  class SigAnnotationMacro(val c: Context) extends MacroApplication with Errors {
     import c.universe._
     import c.Expr
 
     def apply(annottees: Expr[Any]*): Expr[Any] = {
-      // Needed later for families of signatures
-      // println(c.macroApplication)
+      //val MacroApp(_, _, List(members), _) = MacroApp(c.macroApplication)
+      val m = MacroApp(c.macroApplication)
+      println(m)
 
       val (sigName, _, defs) = processInput(annottees.head.tree)
       Expr(Sig(Names(sigName), defs).gen)
