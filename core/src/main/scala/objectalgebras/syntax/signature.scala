@@ -4,7 +4,7 @@ package syntax
 import scala.annotation.implicitNotFound
 import scala.language.experimental.macros
 import scala.annotation.StaticAnnotation
-import scala.reflect.macros.blackbox.Context
+import scala.reflect.macros.whitebox.Context
 import scala.collection.mutable
 
 import utils.Utils
@@ -105,7 +105,7 @@ package object signature {
 
           import scala.language.experimental.macros
           import scala.annotation.StaticAnnotation
-          import scala.reflect.macros.blackbox.Context
+          import scala.reflect.macros.whitebox.Context
 
           final class alg extends StaticAnnotation {
             def macroTransform(annottees: Any*): Any = macro AlgAnnotationMacro.apply

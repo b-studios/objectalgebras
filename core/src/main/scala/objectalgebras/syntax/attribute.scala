@@ -4,7 +4,7 @@ package syntax
 import scala.annotation.implicitNotFound
 import scala.language.experimental.macros
 import scala.annotation.StaticAnnotation
-import scala.reflect.macros.blackbox.Context
+import scala.reflect.macros.whitebox.Context
 
 package object attribute extends AttributeFallbacks {
 
