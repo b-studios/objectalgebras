@@ -4,4 +4,5 @@ package object utils {
     extends Errors
     with MacroApplication
     with ClassDefinition
+    with Internal
 }
